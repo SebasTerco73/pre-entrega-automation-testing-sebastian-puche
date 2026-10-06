@@ -1,0 +1,443 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/sebas/Escritorio/Proyectos/curso-automation-testing/prelab/.venv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.12.3', 'Platform': 'Linux-7.0.0-28-generic-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'html': '4.2.0', 'metadata': '3.1.1'}}
+rootdir: /home/sebas/Escritorio/Proyectos/curso-automation-testing/prelab
+configfile: pytest.ini
+plugins: html-4.2.0, metadata-3.1.1
+collecting ... collected 11 items
+
+test/test_carrito.py::test_06_agregar_producto_al_carrito PASSED         [  9%]
+test/test_carrito.py::test_07_verificar_carrito PASSED                   [ 18%]
+test/test_carrito.py::test_08_navegar_carrito PASSED                     [ 27%]
+test/test_carrito.py::test_09_producto_en_carrito PASSED                 [ 36%]
+test/test_inventario.py::test_02_verificar_inventario 
+[SCREENSHOT] Captura guardada en: /home/sebas/Escritorio/Proyectos/curso-automation-testing/prelab/reports/screenshots/test_02_verificar_inventario.png
+FAILED             [ 45%]
+test/test_inventario.py::test_03_productos_visibles PASSED               [ 54%]
+test/test_inventario.py::test_04_verificar_producto_y_precio PASSED      [ 63%]
+test/test_inventario.py::test_05_validar_interfaz 
+[SCREENSHOT] Captura guardada en: /home/sebas/Escritorio/Proyectos/curso-automation-testing/prelab/reports/screenshots/test_05_validar_interfaz.png
+FAILED                 [ 72%]
+test/test_login.py::test_01_login_valido PASSED                          [ 81%]
+test/test_login.py::test_02_login_invalido PASSED                        [ 90%]
+test/test_login.py::test_03_login_user_locked PASSED                     [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_02_verificar_inventario _________________________
+
+self = <urllib3.connectionpool.HTTPConnectionPool object at 0x77fd86756d50>
+conn = <HTTPConnection(host='localhost', port=53351) at 0x77fd86755df0>
+method = 'POST'
+url = '/session/be415437bc6aed29c3c6778104d26ca7/element/f.B91A76C683BB5CEE36CE0D896CA844C1.d.71E5E3FD3FA4DBE3AFCF37F38E8A81CE.e.4/click'
+body = '{}'
+headers = HTTPHeaderDict({'Accept': 'application/json', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.50.0 (python linux)', 'Connection': 'keep-alive'})
+retries = Retry(total=3, connect=None, read=None, redirect=None, status=None)
+timeout = Timeout(connect=120, read=120, total=None), chunked = False
+response_conn = None, preload_content = True, decode_content = True
+enforce_content_length = True
+
+    def _make_request(
+        self,
+        conn: BaseHTTPConnection,
+        method: str,
+        url: str,
+        body: _TYPE_BODY | None = None,
+        headers: typing.Mapping[str, str] | None = None,
+        retries: Retry | None = None,
+        timeout: _TYPE_TIMEOUT = _DEFAULT_TIMEOUT,
+        chunked: bool = False,
+        response_conn: BaseHTTPConnection | None = None,
+        preload_content: bool = True,
+        decode_content: bool = True,
+        enforce_content_length: bool = True,
+    ) -> BaseHTTPResponse:
+        """
+        Perform a request on a given urllib connection object taken from our
+        pool.
+    
+        :param conn:
+            a connection from one of our connection pools
+    
+        :param method:
+            HTTP request method (such as GET, POST, PUT, etc.)
+    
+        :param url:
+            The URL to perform the request on.
+    
+        :param body:
+            Data to send in the request body, either :class:`str`, :class:`bytes`,
+            an iterable of :class:`str`/:class:`bytes`, or a file-like object.
+    
+        :param headers:
+            Dictionary of custom headers to send, such as User-Agent,
+            If-None-Match, etc. If None, pool headers are used. If provided,
+            these headers completely replace any pool-specific headers.
+    
+        :param retries:
+            Configure the number of retries to allow before raising a
+            :class:`~urllib3.exceptions.MaxRetryError` exception.
+    
+            Pass ``None`` to retry until you receive a response. Pass a
+            :class:`~urllib3.util.retry.Retry` object for fine-grained control
+            over different types of retries.
+            Pass an integer number to retry connection errors that many times,
+            but no other types of errors. Pass zero to never retry.
+    
+            If ``False``, then retries are disabled and any exception is raised
+            immediately. Also, instead of raising a MaxRetryError on redirects,
+            the redirect response will be returned.
+    
+        :type retries: :class:`~urllib3.util.retry.Retry`, False, or an int.
+    
+        :param timeout:
+            If specified, overrides the default timeout for this one
+            request. It may be a float (in seconds) or an instance of
+            :class:`urllib3.util.Timeout`.
+    
+        :param chunked:
+            If True, urllib3 will send the body using chunked transfer
+            encoding. Otherwise, urllib3 will send the body using the standard
+            content-length form. Defaults to False.
+    
+        :param response_conn:
+            Set this to ``None`` if you will handle releasing the connection or
+            set the connection to have the response release it.
+    
+        :param preload_content:
+          If True, the response's body will be preloaded during construction.
+    
+        :param decode_content:
+            If True, will attempt to decode the body based on the
+            'content-encoding' header.
+    
+        :param enforce_content_length:
+            Enforce content length checking. Body returned by server must match
+            value of Content-Length header, if present. Otherwise, raise error.
+        """
+        self.num_requests += 1
+    
+        timeout_obj = self._get_timeout(timeout)
+        timeout_obj.start_connect()
+        conn.timeout = Timeout.resolve_default_timeout(timeout_obj.connect_timeout)
+    
+        try:
+            # Trigger any extra validation we need to do.
+            try:
+                self._validate_conn(conn)
+            except (SocketTimeout, BaseSSLError) as e:
+                self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+                raise
+    
+        # _validate_conn() starts the connection to an HTTPS proxy
+        # so we need to wrap errors with 'ProxyError' here too.
+        except (
+            OSError,
+            NewConnectionError,
+            TimeoutError,
+            BaseSSLError,
+            CertificateError,
+            SSLError,
+        ) as e:
+            new_e: Exception = e
+            if isinstance(e, (BaseSSLError, CertificateError)):
+                new_e = SSLError(e)
+            # If the connection didn't successfully connect to it's proxy
+            # then there
+            if isinstance(
+                new_e, (OSError, NewConnectionError, TimeoutError, SSLError)
+            ) and (conn and conn.proxy and not conn.has_connected_to_proxy):
+                new_e = _wrap_proxy_error(new_e, conn.proxy.scheme)
+            raise new_e
+    
+        # conn.request() calls http.client.*.request, not the method in
+        # urllib3.request. It also calls makefile (recv) on the socket.
+        try:
+            conn.request(
+                method,
+                url,
+                body=body,
+                headers=headers,
+                chunked=chunked,
+                preload_content=preload_content,
+                decode_content=decode_content,
+                enforce_content_length=enforce_content_length,
+            )
+    
+        # We are swallowing BrokenPipeError (errno.EPIPE) since the server is
+        # legitimately able to close the connection after sending a valid response.
+        # With this behaviour, the received response is still readable.
+        except BrokenPipeError:
+            pass
+        except OSError as e:
+            # MacOS/Linux
+            # EPROTOTYPE and ECONNRESET are needed on macOS
+            # https://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
+            # Condition changed later to emit ECONNRESET instead of only EPROTOTYPE.
+            if e.errno != errno.EPROTOTYPE and e.errno != errno.ECONNRESET:
+                raise
+    
+        # Reset the timeout for the recv() on the socket
+        read_timeout = timeout_obj.read_timeout
+    
+        if not conn.is_closed:
+            # In Python 3 socket.py will catch EAGAIN and return None when you
+            # try and read into the file pointer created by http.client, which
+            # instead raises a BadStatusLine exception. Instead of catching
+            # the exception and assuming all BadStatusLine exceptions are read
+            # timeouts, check for a zero timeout before making the request.
+            if read_timeout == 0:
+                raise ReadTimeoutError(
+                    self, url, f"Read timed out. (read timeout={read_timeout})"
+                )
+            conn.timeout = read_timeout
+    
+        # Receive the response from the server
+        try:
+>           response = conn.getresponse()
+                       ^^^^^^^^^^^^^^^^^^
+
+.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:540: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/urllib3/connection.py:638: in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/http/client.py:1457: in getresponse
+    response.begin()
+/usr/lib/python3.12/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/http/client.py:297: in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.SocketIO object at 0x77fd867562f0>
+b = <memory at 0x77fd8676c940>
+
+    def readinto(self, b):
+        """Read up to len(b) bytes into the writable buffer *b* and return
+        the number of bytes read.  If the socket is non-blocking and no bytes
+        are available, None is returned.
+    
+        If *b* is non-empty, a 0 return value indicates that the connection
+        was shutdown at the other end.
+        """
+        self._checkClosed()
+        self._checkReadable()
+        if self._timeout_occurred:
+            raise OSError("cannot read from timed out object")
+        while True:
+            try:
+>               return self._sock.recv_into(b)
+                       ^^^^^^^^^^^^^^^^^^^^^^^
+E               TimeoutError: timed out
+
+/usr/lib/python3.12/socket.py:707: TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="be415437bc6aed29c3c6778104d26ca7")>
+
+    @pytest.mark.inventario
+    def test_02_verificar_inventario(driver):
+>       login(driver)
+
+test/test_inventario.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+utils/helpers.py:14: in login
+    driver.find_element(By.ID, "login-button").click()
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py:112: in click
+    self._execute(Command.CLICK_ELEMENT)
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/webelement.py:504: in _execute
+    return self._parent.execute(command, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:503: in execute
+    response = cast(RemoteConnection, self.command_executor).execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/remote_connection.py:435: in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/remote_connection.py:459: in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/urllib3/_request_methods.py:143: in request
+    return self.request_encode_body(
+.venv/lib/python3.12/site-packages/urllib3/_request_methods.py:278: in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/urllib3/poolmanager.py:459: in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:847: in urlopen
+    retries = retries.increment(
+.venv/lib/python3.12/site-packages/urllib3/util/retry.py:510: in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/urllib3/util/util.py:39: in reraise
+    raise value
+.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:793: in urlopen
+    response = self._make_request(
+.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:542: in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <urllib3.connectionpool.HTTPConnectionPool object at 0x77fd86756d50>
+err = TimeoutError('timed out')
+url = '/session/be415437bc6aed29c3c6778104d26ca7/element/f.B91A76C683BB5CEE36CE0D896CA844C1.d.71E5E3FD3FA4DBE3AFCF37F38E8A81CE.e.4/click'
+timeout_value = 120
+
+    def _raise_timeout(
+        self,
+        err: BaseSSLError | OSError | SocketTimeout,
+        url: str,
+        timeout_value: _TYPE_TIMEOUT | None,
+    ) -> None:
+        """Is the error actually a timeout? Will raise a ReadTimeout or pass"""
+    
+        if isinstance(err, SocketTimeout):
+>           raise ReadTimeoutError(
+                self, url, f"Read timed out. (read timeout={timeout_value})"
+            ) from err
+E           urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=53351): Read timed out. (read timeout=120)
+
+.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:373: ReadTimeoutError
+___________________________ test_05_validar_interfaz ___________________________
+
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="20c5e3c428dd1446ef21e73aef0743b2")>
+
+    @pytest.mark.inventario
+    def test_05_validar_interfaz(driver):
+        login(driver)
+        # Verificar que el logo de la página esté presente
+>       logo = driver.find_element(By.CLASS_NAME, "app_logo")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test/test_inventario.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:914: in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:506: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x77fd86582bd0>
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"no such element: Unable to locate element: {\...\\n#15 0x5d1a87ed33f3 \\u003Cunknown>\\n#16 0x7dbf0709cb84 \\u003Cunknown>\\n#17 0x7dbf07129d6c \\u003Cunknown>\\n"}}'}
+
+    def check_response(self, response: dict[str, Any]) -> None:
+        """Check that a JSON response from the WebDriver does not have an error.
+    
+        Args:
+            response: The JSON response from the WebDriver server as a dictionary
+                object.
+    
+        Raises:
+            WebDriverException: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value["value"]
+                        status = value.get("error", None)
+                        if not status:
+                            status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                            message = value.get("value") or value.get("message")
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get("message") if isinstance(message, dict) else None
+                        else:
+                            message = value.get("message", None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith("__")]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+    
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+    
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".app_logo"}
+E         (Session info: chrome=154.0.8037.97); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       #0 0x5d1a87ed4aaa <unknown>
+E       #1 0x5d1a87802aa9 <unknown>
+E       #2 0x5d1a878593ff <unknown>
+E       #3 0x5d1a87859671 <unknown>
+E       #4 0x5d1a878a5f74 <unknown>
+E       #5 0x5d1a878a31df <unknown>
+E       #6 0x5d1a8784c148 <unknown>
+E       #7 0x5d1a8784cf11 <unknown>
+E       #8 0x5d1a87e975ac <unknown>
+E       #9 0x5d1a87e95dc5 <unknown>
+E       #10 0x5d1a87e80e95 <unknown>
+E       #11 0x5d1a87e96a1a <unknown>
+E       #12 0x5d1a87e695c9 <unknown>
+E       #13 0x5d1a87ebf0f8 <unknown>
+E       #14 0x5d1a87ebf295 <unknown>
+E       #15 0x5d1a87ed33f3 <unknown>
+E       #16 0x7dbf0709cb84 <unknown>
+E       #17 0x7dbf07129d6c <unknown>
+
+.venv/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException
+- Generated html report: file:///home/sebas/Escritorio/Proyectos/curso-automation-testing/prelab/reports/reporte.html -
+=========================== short test summary info ============================
+FAILED test/test_inventario.py::test_02_verificar_inventario - urllib3.except...
+FAILED test/test_inventario.py::test_05_validar_interfaz - selenium.common.ex...
+=================== 2 failed, 9 passed in 724.45s (0:12:04) ====================
