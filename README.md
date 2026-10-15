@@ -109,7 +109,10 @@ Las capturas de pantalla se almacenan en:
 Ejemplos de evidencia generada:
 
 - `reports/screenshots/salida_consola.png`
+![Salida de consola](reports/screenshots/salida_consola.png)
+
 - `reports/screenshots/reporte.png`
+![Reporte de pruebas](reports/screenshots/reporte.png)
 
 
 ### Logs de ejecución
