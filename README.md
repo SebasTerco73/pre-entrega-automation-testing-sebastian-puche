@@ -1,86 +1,102 @@
-# Proyecto de automatización de pruebas con Selenium + Pytest
+# Automatización de pruebas con Selenium y Pytest
 
-## Propósito del proyecto
+Proyecto de automatización de pruebas end-to-end para [Sauce Demo](https://www.saucedemo.com/), desarrollado como parte del curso de Automatización QA.
 
-Este proyecto tiene como objetivo automatizar la validación del flujo principal de una aplicación web de e-commerce demo (www.saucedemo.com), cubriendo escenarios clave de autenticación, inventario, interfaz y carrito de compras.
+La suite utiliza el patrón Page Object Model (POM) para separar la interacción con la interfaz de usuario de los casos de prueba. Se validan los flujos principales de inicio de sesión, inventario y carrito de compras.
 
-Las pruebas están desarrolladas con Python, Selenium y Pytest, y validan que la UI responda correctamente a acciones típicas del usuario, como:
+## Alcance de las pruebas
 
-- Inicio de sesión con credenciales válidas e inválidas
-- Navegación al inventario
-- Visualización de productos y precios
-- Validación de elementos de la interfaz
-- Agregar productos al carrito
-- Navegar y verificar el carrito de compras
+- Inicio de sesión con credenciales válidas, inválidas y usuario bloqueado.
+- Inicio de sesión parametrizado para cubrir diferentes combinaciones de credenciales.
+- Visualización del inventario y de sus productos.
+- Validación del nombre y precio del primer producto.
+- Verificación de elementos principales de la interfaz.
+- Agregado de productos al carrito.
+- Navegación al carrito y validación de los productos agregados.
 
-## Tecnologías utilizadas
+## Tecnologías y requisitos
 
-- Python 3.12
-- Pytest
-- Selenium WebDriver
-- WebDriver Manager
-- Google Chrome
-- pytest-html
-- HTML report generation
+- Python 3.12 o compatible.
+- Pytest.
+- Selenium WebDriver.
+- `webdriver-manager`.
+- `pytest-html`.
+- Google Chrome instalado.
+
+El proyecto configura Chrome en modo headless, por lo que las pruebas se ejecutan sin abrir una ventana del navegador. `webdriver-manager` descarga y administra automáticamente el controlador compatible con Chrome.
 
 ## Estructura del proyecto
 
 ```text
 prelab/
-├── conftest.py
-├── pytest.ini
+├── conftest.py              # Fixtures de WebDriver, sesión y evidencias
+├── datos.py                 # Datos de prueba
+├── pytest.ini               # Markers y configuración de Pytest
 ├── README.md
-├── reports/
-│   ├── reporte.html
-│   ├── ejecucion.log
-│   ├── assets/
-│   └── screenshots/
-├── test/
-│   ├── test_login.py
+├── requirements.txt         # Dependencias a instalar
+├── pages/                   # Page Objects
+│   ├── cart_page.py
+│   ├── inventory_page.py
+│   └── login_page.py
+├── test/                    # Casos de prueba
+│   ├── test_carrito.py
 │   ├── test_inventario.py
-│   └── test_carrito.py
-├── utils/
-│   └── helpers.py
-└── .venv/
+│   └── test_login.py
+├── reports/
+│   ├── reporte.html         # Reporte generado por pytest-html
+│   ├── ejecucion.log       # Log de ejecución
+│   ├── assets/              # Recursos del reporte HTML
+│   └── screenshots/         # Capturas de pruebas fallidas
+└── utils/
 ```
 
-## Instalación de dependencias
+## Instalación
 
-1. Clonar el repositorio o abrir la carpeta del proyecto.
-2. Crear un entorno virtual:
+1. Clonar el repositorio y ubicarse en la carpeta del proyecto:
+
+   ```bash
+   git clone https://github.com/SebasTerco73/pre-entrega-automation-testing-sebastian-puche.git
+   cd prelab
+   ```
+
+2. Crear y activar un entorno virtual:
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+   En Windows PowerShell, la activación equivalente es:
+
+   ```powershell
+   .venv\Scripts\Activate.ps1
+   ```
+
+3. Instalar las dependencias:
+
+   ```bash
+   pip install selenium pytest pytest-html webdriver-manager
+   pip install -r requirements.txt
+   ```
+
+4. Comprobar la instalación:
+
+   ```bash
+   python --version
+   pytest --version
+   ```
+
+## Ejecución
+
+Ejecutar toda la suite:
 
 ```bash
-python3 -m venv .venv
+pytest -v
 ```
 
-3. Activar el entorno virtual (linux):
+La opción `--html=reports/reporte.html --self-contained-html` está configurada en `pytest.ini`, por lo que el reporte HTML se genera automáticamente.
 
-```bash
-source .venv/bin/activate
-```
-
-4. Instalar las dependencias necesarias:
-
-```bash
-pip install selenium pytest pytest-html webdriver-manager
-```
-
-Si se desea confirmar la instalación:
-
-```bash
-python -V
-pytest --version
-```
-
-## Comandos para ejecutar las pruebas
-
-Ejecutar toda la suite de pruebas con generación de reporte HTML automatico:
-
-```bash
-pytest -v 
-```
-
-También se puede ejecutar por etiquetas (markers) definidas en `pytest.ini`:
+Ejecutar únicamente los casos de una funcionalidad:
 
 ```bash
 pytest -m login -v
@@ -88,55 +104,48 @@ pytest -m inventario -v
 pytest -m carrito -v
 ```
 
-## Reporte HTML generado por Pytest
+También existe el marker `actual` para seleccionar los casos que se marquen explícitamente con `@pytest.mark.actual`:
 
-El proyecto genera el reporte ejecutable en la siguiente ruta:
+```bash
+pytest -m actual -v
+```
 
-- `reports/reporte.html`
+## Fixtures principales
 
-Además, el archivo HTML incluye assets y estilos asociados en:
+Las fixtures se encuentran en `conftest.py`:
 
-- `reports/assets/`
+- `driver`: crea un WebDriver de Chrome en modo headless y cierra el navegador al finalizar cada prueba.
+- `login_page`: devuelve una instancia de `LoginPage`.
+- `user_session`: inicia sesión con el usuario válido y devuelve `InventoryPage`.
+- `carrito_con_producto`: agrega el primer producto y devuelve `CartPage`.
 
-Este reporte permite revisar de forma visual el resultado de cada prueba, tiempos de ejecución y estado general.
+Si una prueba falla, se guarda automáticamente una captura en `reports/screenshots/` con el nombre de la prueba.
 
-### Capturas de pantalla
+## Reportes y evidencias
 
-Las capturas de pantalla se almacenan en:
+- Reporte HTML: `reports/reporte.html`
+- Log de ejecución: `reports/ejecucion.log`
+- Capturas de pruebas fallidas: `reports/screenshots/`
 
-- `reports/screenshots/`
+El reporte HTML permite consultar el estado, duración y salida de cada caso ejecutado.
 
-Ejemplos de evidencia generada:
+## Datos de prueba
 
-- `reports/screenshots/salida_consola.png`
-![Salida de consola](reports/screenshots/salida_consola.png)
+El usuario válido utilizado por las fixtures se define en `datos.py`:
 
-- `reports/screenshots/reporte.png`
-![Reporte de pruebas](reports/screenshots/reporte.png)
+```text
+Usuario: standard_user
+Contraseña: secret_sauce
+```
 
+Estas credenciales pertenecen al entorno demo de Sauce Demo y no deben reutilizarse en aplicaciones reales.
 
-### Logs de ejecución
+## Notas
 
-La salida de la ejecución se registra en:
-
-- `reports/ejecucion.log`
-
-Este archivo guarda el resultado detallado de la ejecución de Pytest, incluyendo errores y resumen final.
-
-## Ejecución reciente y resultados observados
-
-Se ejecutó la suite completa del proyecto con el comando indicado. El resultado real de la última ejecución fue:
-
-- 11 pruebas ejecutadas
-- 11 pruebas aprobadas
-- 0 pruebas fallidas
-
-## Recomendaciones
-
-- Mantener la app en un entorno estable antes de ejecutar pruebas automatizadas.
-- Revisar periódicamente el reporte HTML para analizar regresiones.
-- Validar la estabilidad de los selectores de la UI cuando la aplicación cambie.
+- Se necesita conexión a internet para acceder a Sauce Demo y para que `webdriver-manager` descargue el controlador cuando sea necesario.
+- La ejecución depende de que Google Chrome esté instalado y disponible en el sistema.
+- Los selectores y las interacciones con la aplicación están centralizados en los Page Objects para facilitar su mantenimiento.
 
 ## Licencia
 
-Este proyecto se entrega con fines de práctica y automatización de pruebas dentro del curso de Automatización QA.
+Proyecto educativo desarrollado con fines de práctica de automatización de pruebas.
