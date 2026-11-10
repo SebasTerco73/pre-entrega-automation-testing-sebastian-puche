@@ -1,7 +1,10 @@
 import pytest
-from selenium.webdriver.common.by import By
+# encontrar archivo de datos
 from pages.inventory_page import InventoryPage
-from datos import USUARIO_VALIDO, PASSWORD_VALIDO
+from data.datos import USUARIO_VALIDO, PASSWORD_VALIDO, login_parametrized
+from utils.helpers import leer_datos
+from faker import Faker
+
 
 pytestmark = pytest.mark.login
 
@@ -29,16 +32,44 @@ def test_03_login_user_locked(login_page):
     error_message = login_page.obtener_mensaje_error()
     assert error_message == "Epic sadface: Sorry, this user has been locked out.", "Error: No se mostró el mensaje de error esperado"
 
-@pytest.mark.parametrize("usuario,password,deberia_funcionar", [
-    ("standard_user", "secret_sauce", True),
-    ("locked_out_user", "secret_sauce", False),
-    ("standard_user", "wrong_password", False),
-])
-def test_04_login_parametrizado(login_page, usuario, password, deberia_funcionar):
+@pytest.mark.parametrize("usuario,password,mensaje_esperado", login_parametrized)
+def test_04_login_parametrizado(login_page, usuario, password, mensaje_esperado):
     login_page.abrir().login_completo(usuario, password)
-    if deberia_funcionar:
+
+    if mensaje_esperado == "Login exitoso":
         inventory_page = InventoryPage(login_page.driver)
-        assert inventory_page.obtener_titulo() == "Products", "Error: No se pudo iniciar sesión con credenciales válidas"
+        assert inventory_page.obtener_titulo() == "Products", \
+            "Error: No se pudo iniciar sesión con credenciales válidas"
     else:
         error_message = login_page.obtener_mensaje_error()
-        assert error_message == "Epic sadface: Sorry, this user has been locked out." or error_message == "Epic sadface: Username and password do not match any user in this service", "Error: No se mostró el mensaje de error esperado"
+        assert error_message == mensaje_esperado, \
+            "Error: No se mostró el mensaje de error esperado"
+
+
+@pytest.mark.parametrize(
+    "usuario,password,mensaje_esperado",
+    leer_datos("usuarios.csv"),
+)
+def test_05_login_archivos(login_page, usuario, password, mensaje_esperado):
+    login_page.abrir().login_completo(usuario, password)
+
+    if mensaje_esperado == "Login exitoso":
+        inventory_page = InventoryPage(login_page.driver)
+        assert inventory_page.obtener_titulo() == "Products"
+    else:
+        assert login_page.obtener_mensaje_error() == mensaje_esperado
+
+def test_06_login_faker(login_page):
+    fake = Faker('es_ES')
+
+    usuario_falso = fake.user_name()
+    password_falso = fake.password()
+
+    print(f"Usuario falso: {usuario_falso}, Password falso: {password_falso}")
+
+    login_page.abrir().login_completo(usuario_falso, password_falso)
+    error_message = login_page.obtener_mensaje_error()
+    assert error_message == "Epic sadface: Username and password do not match any user in this service"
+
+# pytest -m -s login -v
+# -s para que muestre los prints

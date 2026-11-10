@@ -1,0 +1,9 @@
+usuario,password,mensaje_esperado
+"standard_user", "secret_sauce", "Login exitoso"
+"usuario_invalido", "secret_sauce", "Epic sadface: Username and password do not match any user in this service"
+"standard_user", "password_invalido", "Epic sadface: Username and password do not match any user in this service"
+"usuario_invalido", "password_invalido", "Epic sadface: Username and password do not match any user in this service"
+"", "secret_sauce", "Epic sadface: Username is required"
+"standard_user", "", "Epic sadface: Password is required"
+"", "", "Epic sadface: Username is required"
+"", "secret_sauce", "Epic sadface: Username is required"

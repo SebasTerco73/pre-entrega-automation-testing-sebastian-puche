@@ -1,0 +1,42 @@
+[
+    {
+        "usuario": "standard_user",
+        "password": "secret_sauce",
+        "mensaje_esperado": "Login exitoso"
+    },
+    {
+        "usuario": "usuario_invalido",
+        "password": "secret_sauce",
+        "mensaje_esperado": "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+        "usuario": "standard_user",
+        "password": "password_invalido",
+        "mensaje_esperado": "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+        "usuario": "usuario_invalido",
+        "password": "password_invalido",
+        "mensaje_esperado": "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+        "usuario": "",
+        "password": "secret_sauce",
+        "mensaje_esperado": "Epic sadface: Username is required"
+    },
+    {
+        "usuario": "standard_user",
+        "password": "",
+        "mensaje_esperado": "Epic sadface: Password is required"
+    },
+    {
+        "usuario": "",
+        "password": "",
+        "mensaje_esperado": "Epic sadface: Username is required"
+    },
+    {
+        "usuario": "",
+        "password": "secret_sauce",
+        "mensaje_esperado": "Epic sadface: Username is required"
+    }
+]

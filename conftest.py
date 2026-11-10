@@ -8,7 +8,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
-from datos import USUARIO_VALIDO, PASSWORD_VALIDO
+from data.datos import USUARIO_VALIDO, PASSWORD_VALIDO
+
+from utils.helpers import logger
 
 
 @pytest.fixture(scope="function")
@@ -35,10 +37,12 @@ def driver():
 
 @pytest.fixture
 def login_page(driver):
+    logger.info("Abriendo la página de login")
     return LoginPage(driver)
 
 @pytest.fixture
 def user_session(login_page):
+    logger.info("Iniciando sesión con usuario válido")
     login_page.abrir().login_completo(
         USUARIO_VALIDO, PASSWORD_VALIDO
         )
@@ -46,6 +50,7 @@ def user_session(login_page):
 
 @pytest.fixture
 def carrito_con_producto(user_session):
+    logger.info("Agregando un producto al carrito")
     user_session.agregar_primer_producto()
 
     user_session.esperar_boton_remove()
@@ -67,3 +72,7 @@ def pytest_runtest_makereport(item, call):
             image_path = screenshots_dir / f"{item.name}.png"
             driver.save_screenshot(str(image_path))
             print(f"\n[SCREENSHOT] Captura guardada en: {image_path}")
+
+def pytest_html_report_title(report):
+    report.title = "Reporte de Pruebas Automatizadas - Sauce Demo"
+

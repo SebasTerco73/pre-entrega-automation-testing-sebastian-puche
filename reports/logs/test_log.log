@@ -1,0 +1,114 @@
+2026-11-10 20:47:14 INFO talentolab - Obteniendo publicaciones desde http://jsonplaceholder.typicode.com/posts
+2026-11-10 20:47:14 INFO talentolab - Obteniendo usuarios desde http://jsonplaceholder.typicode.com/users
+2026-11-10 20:47:14 INFO talentolab - Obteniendo usuario con ID 1 desde http://jsonplaceholder.typicode.com/users
+2026-11-10 20:47:14 INFO talentolab - Obteniendo usuario con ID 1 desde http://jsonplaceholder.typicode.com/users
+2026-11-10 20:47:14 INFO talentolab - Obteniendo usuario con ID 1 desde http://jsonplaceholder.typicode.com/users
+2026-11-10 20:47:14 INFO talentolab - Obteniendo usuario con ID 1 desde http://jsonplaceholder.typicode.com/users
+2026-11-10 20:47:15 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:15 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:15 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:15 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:16 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:16 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:17 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:17 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:18 INFO talentolab - Agregando un producto al carrito
+2026-11-10 20:47:18 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:18 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:18 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:18 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:19 INFO talentolab - Agregando un producto al carrito
+2026-11-10 20:47:19 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:19 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:20 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:20 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:21 INFO talentolab - Agregando un producto al carrito
+2026-11-10 20:47:21 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:21 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:22 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:22 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:23 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:23 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:23 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:23 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:24 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:24 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:24 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:24 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:25 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:25 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:26 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:26 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:26 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:27 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:27 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:27 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:28 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:28 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:28 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:28 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:29 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:29 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:29 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:29 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:30 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:30 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:31 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:31 INFO talentolab - Iniciando sesión con usuario válido
+2026-11-10 20:47:31 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:31 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:32 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:34 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:34 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:35 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:36 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:36 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:37 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:38 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:38 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:40 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:41 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:41 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:43 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:44 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:44 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:45 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:47 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:47 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:47 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:49 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:49 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:49 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:51 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:51 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:52 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:53 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:53 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:54 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:55 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:55 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:56 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:58 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:58 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:47:58 INFO talentolab - Abriendo la página de login
+2026-11-10 20:47:59 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:47:59 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:00 INFO talentolab - Abriendo la página de login
+2026-11-10 20:48:01 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:48:01 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:02 INFO talentolab - Abriendo la página de login
+2026-11-10 20:48:03 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:48:03 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:04 INFO talentolab - Abriendo la página de login
+2026-11-10 20:48:06 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:48:06 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:08 INFO talentolab - Abriendo la página de login
+2026-11-10 20:48:09 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:48:10 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:10 INFO talentolab - Abriendo la página de login
+2026-11-10 20:48:12 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:48:12 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:12 INFO talentolab - Abriendo la página de login
+2026-11-10 20:48:14 INFO WDM - ====== WebDriver manager ======
+2026-11-10 20:48:14 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
+2026-11-10 20:48:15 INFO talentolab - Abriendo la página de login
