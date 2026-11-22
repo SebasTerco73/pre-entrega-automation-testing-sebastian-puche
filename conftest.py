@@ -1,5 +1,8 @@
+import base64
+
 import pytest
 from pathlib import Path
+import pytest_html
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -70,9 +73,24 @@ def pytest_runtest_makereport(item, call):
             screenshots_dir = Path(__file__).resolve().parent / "reports" / "screenshots"
             screenshots_dir.mkdir(parents=True, exist_ok=True)
             image_path = screenshots_dir / f"{item.name}.png"
-            driver.save_screenshot(str(image_path))
-            print(f"\n[SCREENSHOT] Captura guardada en: {image_path}")
+            captura = driver.save_screenshot(str(image_path))
+            if captura:
+                print(f"\n[SCREENSHOT] Captura guardada en: {image_path}")
+
+                imagen_base64 = base64.b64encode(
+                    image_path.read_bytes()
+                ).decode("utf-8")
+
+                extras = getattr(report, "extras", [])
+                extras.append(
+                    pytest_html.extras.image(
+                        imagen_base64,
+                        mime_type="image/png",
+                        extension="png",
+                        name="Captura de error",
+                    )
+                )
+                report.extras = extras
 
 def pytest_html_report_title(report):
     report.title = "Reporte de Pruebas Automatizadas - Sauce Demo"
-
