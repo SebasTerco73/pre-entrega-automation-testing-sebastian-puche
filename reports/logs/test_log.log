@@ -1062,3 +1062,4 @@
 2026-11-23 17:39:10 INFO WDM - ====== WebDriver manager ======
 2026-11-23 17:39:11 INFO WDM - Driver [/home/sebas/.wdm/drivers/chromedriver/linux64/154.0.8037.92/chromedriver-linux64/chromedriver] found in cache by browser version
 2026-11-23 17:39:12 INFO talentolab - Abriendo la página de login
+2026-11-23 18:01:58 INFO talentolab - Prueba de rotación de logs configurada
