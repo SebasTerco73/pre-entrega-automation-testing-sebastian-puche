@@ -29,23 +29,23 @@ def test_obtener_publicaciones(post_url):
         assert 'title' in publicacion
         assert 'body' in publicacion
 
-# def test_obtener_publicacion_por_id(post_url):
-#     id_publicacion = 1
-#     publicacion = obtener_publicacion_por_id(post_url, id_publicacion)
-#     assert isinstance(publicacion, dict)
-#     assert publicacion['id'] == id_publicacion
+def test_obtener_publicacion_por_id(post_url):
+    id_publicacion = 1
+    publicacion = obtener_publicacion_por_id(post_url, id_publicacion)
+    assert isinstance(publicacion, dict)
+    assert publicacion['id'] == id_publicacion
 
-# def test_crear_publicacion(post_url):
-#     datos = {
-#         "title": "foo",
-#         "body": "bar",
-#         "userId": 1
-#     }
-#     nueva_publicacion = crear_publicacion(post_url, datos)
-#     assert isinstance(nueva_publicacion, dict)
-#     assert nueva_publicacion['title'] == datos['title']
-#     assert nueva_publicacion['body'] == datos['body']
-#     assert nueva_publicacion['userId'] == datos['userId']
+def test_crear_publicacion(post_url):
+    datos = {
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    }
+    nueva_publicacion = crear_publicacion(post_url, datos)
+    assert isinstance(nueva_publicacion, dict)
+    assert nueva_publicacion['title'] == datos['title']
+    assert nueva_publicacion['body'] == datos['body']
+    assert nueva_publicacion['userId'] == datos['userId']
 
 ## Check sirve para hacer multiples assert sin que se detenga el test al primer error
 def test_obtener_usuarios(user_url):

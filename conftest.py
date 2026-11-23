@@ -3,6 +3,7 @@ import base64
 import pytest
 from pathlib import Path
 import pytest_html
+from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -14,7 +15,6 @@ from pages.inventory_page import InventoryPage
 from data.datos import USUARIO_VALIDO, PASSWORD_VALIDO
 
 from utils.helpers import logger
-
 
 @pytest.fixture(scope="function")
 def driver():
@@ -75,7 +75,8 @@ def pytest_runtest_makereport(item, call):
         if driver is not None:
             screenshots_dir = Path(__file__).resolve().parent / "reports" / "screenshots"
             screenshots_dir.mkdir(parents=True, exist_ok=True)
-            image_path = screenshots_dir / f"{item.name}.png"
+            fecha_hora = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+            image_path = screenshots_dir / f"{item.name}_{fecha_hora}.png"
             captura = driver.save_screenshot(str(image_path))
             if captura:
                 print(f"\n[SCREENSHOT] Captura guardada en: {image_path}")

@@ -4,6 +4,22 @@ from API.metodo_http import obtener_publicaciones
 URL = "https://jsonplaceholder.typicode.com/posts"
 
 res = requests.get(URL)
+
+datos_actualizados = {
+    "title": "foo actualizado",
+    "body": "bar actualizado",
+    "userId": 1
+}
+
+res = requests.put(f"{URL}/1", json=datos_actualizados)
+
+print("Código HTTP:", res.status_code)
+print("Datos actualizados:", res.json())
+
+res = requests.delete(f"{URL}/1")
+print("Código HTTP:", res.status_code)  
+
+
 # print (res.json())
 
 # ## POST JSON
@@ -72,16 +88,3 @@ res = requests.get(URL)
 # print("Productos finales después de agregar el nuevo producto:")
 # print(len(productos_finales))
 
-datos_actualizados = {
-    "title": "foo actualizado",
-    "body": "bar actualizado",
-    "userId": 1
-}
-
-res = requests.put(f"{URL}/1", json=datos_actualizados)
-
-print("Código HTTP:", res.status_code)
-print("Datos actualizados:", res.json())
-
-res = requests.delete(f"{URL}/1")
-print("Código HTTP:", res.status_code)  

@@ -30,7 +30,7 @@ def test_03_login_user_locked(login_page):
     user, password = credenciales["bloqueado"]
     login_page.abrir().login_completo(user, password)
     error_message = login_page.obtener_mensaje_error()
-    assert error_message == "Epic sadface: Sorry, this user has been locked out.", "Error: No se mostró el mensaje de error esperado"
+    assert error_message == "ace: Sorry, this user has been locked out.", "Error: No se mostró el mensaje de error esperado"
 
 @pytest.mark.parametrize("usuario,password,mensaje_esperado", login_parametrized)
 def test_04_login_parametrizado(login_page, usuario, password, mensaje_esperado):
