@@ -11,9 +11,12 @@ class CartPage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10)
-        # Verificar que estamos en la página correcta
+        self.wait = WebDriverWait(driver, 15)
+        # Verificar tanto la URL como el título antes de usar la página
         self.wait.until(EC.url_contains("cart.html"))
+        self.wait.until(
+            EC.text_to_be_present_in_element(self._TITLE, "Your Cart")
+        )
 
     def esta_en_carrito(self):
         """Verifica si estamos en la página del carrito."""
