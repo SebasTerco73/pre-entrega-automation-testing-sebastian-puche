@@ -14,6 +14,7 @@ def before_scenario(context, scenario):
     options.add_argument("--disable-infobars")
     options.add_argument("--disable-gpu") 
     options.add_argument("--disable-dev-shm-usage") 
+    options.add_argument("--no-sandbox")
 
     context.driver = webdriver.Chrome(service=service, options=options)
 

@@ -74,6 +74,9 @@ prelab/
 │   ├── test_carrito.py
 │   ├── test_inventario.py
 │   └── test_login.py
+├── .github/
+│   └── workflows/
+│       └── tests.yml        # Ejecución automática con GitHub Actions
 ├── reports/
 │   ├── reporte.html         # Reporte generado por pytest-html
 │   ├── ejecucion.log        # Log de ejecución
@@ -191,6 +194,30 @@ behave --tags="@login and not @regression"
 ```
 
 Los archivos Gherkin se encuentran en `features/` y sus definiciones de pasos en `features/steps/`. El hook `features/environment.py` crea y finaliza el navegador para cada escenario.
+
+## Automatización con GitHub Actions
+
+El workflow se encuentra en `.github/workflows/tests.yml` y se ejecuta automáticamente en cada `push` y `pull_request`.
+
+El proceso realizado por GitHub Actions es:
+
+1. Descarga el código del repositorio con `actions/checkout`.
+2. Instala Python 3.12 con `actions/setup-python`.
+3. Instala Google Chrome estable con `browser-actions/setup-chrome`.
+4. Instala las dependencias indicadas en `requirements.txt`.
+5. Ejecuta toda la suite de Pytest con `pytest`.
+6. Ejecuta los escenarios de Behave con `behave`.
+7. Conserva como artefacto la carpeta `reports/`, incluyendo reportes HTML, logs y capturas.
+
+Para consultar una ejecución:
+
+1. Abrir el repositorio en GitHub.
+2. Entrar en la pestaña **Actions**.
+3. Seleccionar la ejecución llamada **Pruebas automatizadas**.
+4. Abrir el job **test** y revisar cada paso.
+5. Si existen artefactos disponibles, descargar **resultados-pruebas** desde la sección **Artifacts**.
+
+Cada ejecución utiliza una máquina limpia. Python, Chrome y las dependencias se instalan dentro del workflow; no se reutiliza la instalación local del equipo.
 
 ## Fixtures principales de Pytest
 

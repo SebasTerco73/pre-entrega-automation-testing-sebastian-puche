@@ -28,8 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Ejecutar las pruebas
+      - name: Ejecutar las pruebas con Pytest
         run: pytest
+
+      - name: Ejecutar las pruebas con Behave
+        run: behave
 
       - name: Guardar reportes y logs
         if: always()
