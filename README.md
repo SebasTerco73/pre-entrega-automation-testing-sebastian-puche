@@ -25,6 +25,7 @@ La suite combina:
 - Behave para escenarios Gherkin.
 - Webdriver-manager para administrar el controlador de Chrome.
 - Faker y pytest-check como utilidades de pruebas.
+- Requests para las pruebas de API.
 
 El proyecto configura Chrome en modo headless, por lo que las pruebas se ejecutan sin abrir una ventana del navegador. `webdriver-manager` descarga y administra automáticamente el controlador compatible con Chrome.
 
@@ -40,6 +41,7 @@ pytest-html
 webdriver-manager
 faker
 pytest-check
+requests
 ```
 
 Cambios recientes documentados:

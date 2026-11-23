@@ -5,3 +5,4 @@ pytest-html
 webdriver-manager
 faker
 pytest-check
+requests

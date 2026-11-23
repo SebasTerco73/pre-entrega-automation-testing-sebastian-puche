@@ -75,7 +75,7 @@ def pytest_runtest_makereport(item, call):
         if driver is not None:
             screenshots_dir = Path(__file__).resolve().parent / "reports" / "screenshots"
             screenshots_dir.mkdir(parents=True, exist_ok=True)
-            fecha_hora = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+            fecha_hora = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
             image_path = screenshots_dir / f"{item.name}_{fecha_hora}.png"
             captura = driver.save_screenshot(str(image_path))
             if captura:
