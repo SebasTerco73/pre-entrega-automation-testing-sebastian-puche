@@ -28,7 +28,10 @@ def driver():
     options.add_argument("--disable-gpu") # Deshabilita la aceleración por hardware para evitar problemas en algunos entornos.
     options.add_argument("--no-sandbox") # Deshabilita el sandbox de Chrome, necesario en algunos entornos de CI/CD.
     options.add_argument("--disable-dev-shm-usage") # Evita problemas de espacio compartido en contenedores Docker.
-
+    options.add_argument("--disable-notifications")
+    options.add_argument("--disable-popup-blocking")
+    options.add_argument("--disable-infobars")
+    
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
     driver.maximize_window()

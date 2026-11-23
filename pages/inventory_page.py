@@ -76,3 +76,7 @@ class InventoryPage:
         logout_link.click()
         from pages.login_page import LoginPage
         return LoginPage(self.driver)
+
+    def obtener_logo_content(self):
+        """Obtiene el contenido del logo de la página de inventario."""
+        return self.driver.find_element(By.CLASS_NAME, "app_logo").text
