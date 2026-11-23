@@ -44,12 +44,6 @@ pytest-check
 requests
 ```
 
-Cambios recientes documentados:
-
-- Se agregó **`behave`** para ejecutar las pruebas escritas en Gherkin.
-- Se agregó/correctamente declaró **`pytest-check`** para utilizar aserciones adicionales de Pytest. Antes figuraba `pitest-check`, un nombre incorrecto.
-- Se conservaron las dependencias necesarias para Selenium, Pytest, reportes HTML, manejo del ChromeDriver y generación de datos de prueba.
-
 ## Estructura del proyecto
 
 ```text
